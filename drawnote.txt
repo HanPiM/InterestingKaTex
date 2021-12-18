@@ -1,3 +1,5 @@
+布局和颜色参考了 [Collapsible Blocks](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#removing-the-title)
+
 $
 \def\notew{200pt}
 \def\noteh{44pt}
@@ -30,7 +32,7 @@ $
 }
 \def\noteOk{
   \def\notech{\kern{-0.7pt}✔\kern{2.5pt}}
-  \noteSetT{成功}
+  \noteSetT{示例}
   \def\notelcol{#00C853}\def\notetcol{#E5F9ED}
 }
 \def\noteQ{
