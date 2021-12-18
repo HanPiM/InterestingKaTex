@@ -1,2 +1,2 @@
 # InterestingKaTex
-有趣的 LaTex(KaTex)
+有趣的 LaTex(KaTex) 示例
