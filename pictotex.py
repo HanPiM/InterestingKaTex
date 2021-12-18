@@ -1,5 +1,6 @@
 from PIL import Image
 
+# 用于生成简单的图片的 LaTeX 表达方式（长*宽必须小于 234，大于会导致渲染失败）
 path=input("图片路径: ")
 
 img=Image.open(path)
