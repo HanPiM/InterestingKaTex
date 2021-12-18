@@ -1,3 +1,5 @@
+[Also on GitHub](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote.txt)
+
 $
 \def\notew{200pt}
 \def\noteh{44pt}
@@ -6,7 +8,8 @@ $
 \def\noteSetT#1{
   \def\notetitle{\textsf{\textbf{#1}}}
 }
-\def\notetitleoffest{40pt}
+% 标题如果不是两字则需要调整
+\def\notetitleoffest{37pt}
 \def\noteNote{
   \def\notech{\kern{-1pt}✒\kern{0.5pt}}
   \noteSetT{注意}
@@ -62,7 +65,6 @@ $
   \noteSetT{引述}
   \def\notelcol{#9E9E9E}\def\notetcol{#F5F5F5}
 }
-% 标题如果不是两字则需要调整
 \noteCite
 \def\noteinfo{}
 \def\drawnote{
@@ -92,12 +94,25 @@ $
     }
   }
 }
-\kern{-\notetitleoffest}}% note 结束
-\noteInfo\noteSetT{关于此 \LaTeX\ 源码}
-\def\notetitleoffest{88pt}
-\drawnote
+\kern{-\notetitleoffest}
+% 也这里在这里直接放置内容，但需要使用 raisebox
+\raisebox{10pt}{
+  \footnotesize
+  \sf{你可以在任意改动本文后重新发布而不需要询求同意。}
+}
+}% note 结束
+\noteNote\drawnote\\
+\noteAbstract\drawnote\\
+\noteInfo\drawnote\\
+\noteTip\drawnote\\
+\noteOk\drawnote\\
+\noteQ\drawnote\\
+\noteWarn\drawnote\\
+\noteFail\drawnote\\
+\noteDanger\drawnote\\
+\noteBug\drawnote\\
+\noteCite\drawnote\\
 $
-$\footnotesize\raisebox{9pt}{\textsf{你可以进行任意的复制/改动而不需要询求同意。}}$
 
 使用示例：
 
@@ -161,7 +176,7 @@ $\footnotesize
 \sf{献作为一种公开的行为，永久放弃根据版权法对该软件的所有当}\\
 \sf{前和未来权利。}\\
 \\
-\sf{该软件“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
+\sf{该源码“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
 \sf{括但不限于适销性、特定用途的适用性和不侵权的保证。在任何}\\
 \sf{情况下，作者均不对任何索赔、损害或其他责任承担责任（无论}\\
 \sf{是在合同、侵权行为或其他方面，由源码或源码的使用或其他交}\\
@@ -171,7 +186,7 @@ $\footnotesize
 \end{array}}
 $
 
-经过修改后可在讨论区发布的版本
+经过修改后可在讨论区发布的版本（unidode 字符 ℹ 在讨论区渲染不了，改用加粗字符 i）
 
 $
 % 画框和阴影
@@ -215,7 +230,7 @@ $.$\footnotesize
 \textsf{献作为一种公开的行为，永久放弃根据版权法对该软件的所有当}\\
 \textsf{前和未来权利。}\\
 \\
-\textsf{该软件“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
+\textsf{该源码“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
 \textsf{括但不限于适销性、特定用途的适用性和不侵权的保证。在任何}\\
 \textsf{情况下，作者均不对任何索赔、损害或其他责任承担责任（无论}\\
 \textsf{是在合同、侵权行为或其他方面，由源码或源码的使用或其他交}\\
