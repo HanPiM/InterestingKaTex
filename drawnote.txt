@@ -1,5 +1,3 @@
-[Also on GitHub](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote.txt)
-
 $
 \def\notew{200pt}
 \def\noteh{44pt}
