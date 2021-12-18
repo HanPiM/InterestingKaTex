@@ -1,0 +1,227 @@
+$
+\def\notew{200pt}
+\def\noteh{44pt}
+\def\notetitlepos{24pt}
+\def\notetitleh{20pt}
+\def\noteSetT#1{
+  \def\notetitle{\textsf{\textbf{#1}}}
+}
+\def\notetitleoffest{40pt}
+\def\noteNote{
+  \def\notech{\kern{-1pt}✒\kern{0.5pt}}
+  \noteSetT{注意}
+  \def\notelcol{#448AFF}\def\notetcol{#ECF3FF}
+}
+\def\noteAbstract{
+  \def\notech{\kern{-2pt}\char"d83d\char"ddd2\kern{1.5pt}}
+  \noteSetT{摘要}
+  \def\notelcol{#00B0FF}\def\notetcol{#E5F7FF}
+}
+\def\noteInfo{
+  \def\notech{\kern{2pt}ℹ\kern{5.5pt}}
+  \noteSetT{信息}
+  \def\notelcol{#00B8D4}\def\notetcol{#E5F8FB}
+}
+\def\noteTip{
+  \def\notech{\kern{-5pt}\char"d83d\char"dca1}
+  \noteSetT{提示}
+  \def\notelcol{#00BFA5}\def\notetcol{#E5F8F6}
+}
+\def\noteOk{
+  \def\notech{\kern{-0.7pt}✔\kern{2.5pt}}
+  \noteSetT{成功}
+  \def\notelcol{#00C853}\def\notetcol{#E5F9ED}
+}
+\def\noteQ{
+  \def\notech{\kern{0.5pt}\textbf{?}\kern{4.5pt}}
+  \noteSetT{问题}
+  \def\notelcol{#64DD17}\def\notetcol{#EFFCE7}
+}
+\def\noteWarn{
+  \def\notech{\kern{-1pt}⚠\kern{2.8pt}}
+  \noteSetT{警告}
+  \def\notelcol{#FF9100}\def\notetcol{#FFF4E5}
+}
+\def\noteFail{
+  \def\notech{\kern{-1pt}✖\kern{2.6pt}}
+  \noteSetT{失败}
+  \def\notelcol{#FF5252}\def\notetcol{#FFEDED}
+}
+\def\noteDanger{
+  \def\notech{\kern{-5pt}⚡}
+  \noteSetT{危险}
+  \def\notelcol{#FF1744}\def\notetcol{#FFE7EC}
+}
+\def\noteBug{
+  \def\notech{\kern{-4.5pt}\char"d83d\char"dc1e\kern{-0.5pt}}
+  \noteSetT{错误}
+  \def\notelcol{#F50057}\def\notetcol{#FEE5EE}
+}
+\def\noteCite{
+  \def\notech{\kern{1pt}\textbf{"}\kern{3.2pt}}
+  \noteSetT{引述}
+  \def\notelcol{#9E9E9E}\def\notetcol{#F5F5F5}
+}
+% 标题如果不是两字则需要调整
+\noteCite
+\def\noteinfo{}
+\def\drawnote{
+% 画框和阴影
+\color{\notelcol}
+\rule{2pt}{\noteh}
+\color{\notetcol}
+\rule[\notetitlepos]{\notew}{\notetitleh}
+\color{#e8e8e8}\rule{0.5pt}{\noteh}
+\color{#f5f5f5}\rule{0.5pt}{\noteh}
+\color{#fafafa}\rule{0.5pt}{\noteh}
+\kern{-\notew}\kern{-1.5pt}
+\def\drawx#1#2{\color{#1}\rule[#2]{\notew}{0pt}\kern{-\notew}}
+\drawx{#bfbfbf}{0pt}
+\drawx{#d6d6d6}{-0.5pt}
+\drawx{#ececec}{-1.0pt}
+\drawx{#f8f8f8}{-1.5pt}
+\color{black}
+% 画标题
+\raisebox{\notetitlepos}{
+  \raisebox{6pt}{
+    \kern{-1pt}
+    \color{\notelcol}\large{\notech}
+    \raisebox{1.5pt}{
+      \color{#404040}\footnotesize
+      \kern{-4pt}\notetitle
+    }
+  }
+}
+\kern{-\notetitleoffest}}% note 结束
+\noteInfo\noteSetT{关于此 \LaTeX\ 源码}
+\def\notetitleoffest{88pt}
+\drawnote
+$
+$\footnotesize\raisebox{9pt}{\textsf{你可以进行任意的复制/改动而不需要询求同意。}}$
+
+使用示例：
+
+$
+\def\notew{230pt}
+\def\noteh{170pt}
+\def\notetitlepos{150pt}
+\def\notetitleh{20pt}
+\def\noteSetT#1{
+  \def\notetitle{\textsf{\textbf{#1}}}
+}
+\def\notetitleoffest{40pt}
+\def\noteInfo{
+  \def\notech{\kern{2pt}ℹ\kern{5.5pt}}
+  \noteSetT{信息}
+  \def\notelcol{#00B8D4}\def\notetcol{#E5F8FB}
+}
+\def\drawnote{
+% 画框和阴影
+\color{\notelcol}
+\rule{2pt}{\noteh}
+\color{\notetcol}
+\rule[\notetitlepos]{\notew}{\notetitleh}
+\color{#e8e8e8}\rule{0.5pt}{\noteh}
+\color{#f5f5f5}\rule{0.5pt}{\noteh}
+\color{#fafafa}\rule{0.5pt}{\noteh}
+\kern{-\notew}\kern{-1.5pt}
+\def\drawx#1#2{\color{#1}\rule[#2]{\notew}{0pt}\kern{-\notew}}
+\drawx{#bfbfbf}{0pt}
+\drawx{#d6d6d6}{-0.5pt}
+\drawx{#ececec}{-1.0pt}
+\drawx{#f8f8f8}{-1.5pt}
+\color{black}
+% 画标题
+\raisebox{\notetitlepos}{
+  \raisebox{6pt}{
+    \kern{-1pt}
+    \color{\notelcol}\large{\notech}
+    \raisebox{1.5pt}{
+      \color{#404040}\footnotesize
+      \kern{-4pt}\notetitle
+    }
+  }
+}
+\kern{-\notetitleoffest}}% note 结束
+\noteInfo\noteSetT{无版权声明}
+\def\notetitleoffest{80pt}
+\drawnote
+$
+$\footnotesize
+{}^{\begin{array}{l}
+\sf{这是发布到公共领域的免费且不受阻碍的源码。}\\
+\\
+\sf{任何人都可以出于任何目的、商业或非商业目的，以任何方式自}\\
+\sf{由复制、修改、发布、使用、编译、销售或分发本源码，无论是}\\
+\sf{源代码形式还是编译后的二进制文件。}\\
+\\
+\sf{在承认版权法的司法管辖区，本源码的作者将本软件的任何所有}\\
+\sf{的版权权益都归于公共领域。我们做出这种奉献是为了广大公众}\\
+\sf{的利益，而不是损害我们的继承人和继任者。我们打算将这种奉}\\
+\sf{献作为一种公开的行为，永久放弃根据版权法对该软件的所有当}\\
+\sf{前和未来权利。}\\
+\\
+\sf{该软件“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
+\sf{括但不限于适销性、特定用途的适用性和不侵权的保证。在任何}\\
+\sf{情况下，作者均不对任何索赔、损害或其他责任承担责任（无论}\\
+\sf{是在合同、侵权行为或其他方面，由源码或源码的使用或其他交}\\
+\sf{易引起的、因源码引起的或与之相关的）。}\\
+\\
+\sf{更多信息请参考}\ \texttt{<http://unlicense.org>}
+\end{array}}
+$
+
+经过修改后可在讨论区发布的版本
+
+$
+% 画框和阴影
+\color{#00B8D4}
+\rule{2pt}{170pt}
+\color{#E5F8FB}
+\rule[150pt]{230pt}{20pt}
+\color{#e8e8e8}\rule{0.5pt}{170pt}
+\color{#f5f5f5}\rule{0.5pt}{170pt}
+\color{#fafafa}\rule{0.5pt}{170pt}
+\kern{-230pt}\kern{-1.5pt}
+\color{#bfbfbf}\rule[0pt]{230pt}{0pt}\kern{-230pt}
+\color{#d6d6d6}\rule[-0.5pt]{230pt}{0pt}\kern{-230pt}
+\color{#ececec}\rule[-1pt]{230pt}{0pt}\kern{-230pt}
+\color{#f8f8f8}\rule[-1.5pt]{230pt}{0pt}\kern{-230pt}
+\color{black}
+% 画标题
+\raisebox{150pt}{
+  \raisebox{6pt}{
+    \kern{-1pt}
+    \color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
+    \raisebox{1.5pt}{
+      \color{#404040}\footnotesize
+      \kern{-4pt}\sf\bf{无版权声明}
+    }
+  }
+}
+\kern{-70pt}
+$.$\footnotesize
+{}^{
+\begin{array}{l}
+\textsf{这是发布到公共领域的免费且不受阻碍的源码。}\\
+\\
+\textsf{任何人都可以出于任何目的、商业或非商业目的，以任何方式自}\\
+\textsf{由复制、修改、发布、使用、编译、销售或分发本源码，无论是}\\
+\textsf{源代码形式还是编译后的二进制文件。}\\
+\\
+\textsf{在承认版权法的司法管辖区，本源码的作者将本软件的任何所有}\\
+\textsf{的版权权益都归于公共领域。我们做出这种奉献是为了广大公众}\\
+\textsf{的利益，而不是损害我们的继承人和继任者。我们打算将这种奉}\\
+\textsf{献作为一种公开的行为，永久放弃根据版权法对该软件的所有当}\\
+\textsf{前和未来权利。}\\
+\\
+\textsf{该软件“按原样”提供，不提供任何形式的明示或暗示的保证，包}\\
+\textsf{括但不限于适销性、特定用途的适用性和不侵权的保证。在任何}\\
+\textsf{情况下，作者均不对任何索赔、损害或其他责任承担责任（无论}\\
+\textsf{是在合同、侵权行为或其他方面，由源码或源码的使用或其他交}\\
+\textsf{易引起的、因源码引起的或与之相关的）。}\\
+\\
+\textsf{更多信息请参考}\ \texttt{<http://unlicense.org>}
+\end{array}
+}
+$
