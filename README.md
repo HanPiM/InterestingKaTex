@@ -3,4 +3,6 @@
 
 drawnote : 绘制一个注释
 
+![](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote1.jpg)
+
 ![](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote.jpg)
