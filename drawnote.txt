@@ -92,7 +92,7 @@ $
     }
   }
 }
-\kern{-\notetitleoffest}
+\kern{-\notetitleoffest}%如果在下一个行内公式写文字，则该数值只需要设为极大值即可
 % 也这里在这里直接放置内容，但需要使用 raisebox
 \raisebox{10pt}{
   \footnotesize
@@ -115,7 +115,7 @@ $
 使用示例：
 
 $
-\def\notew{230pt}
+\def\notew{240pt}
 \def\noteh{170pt}
 \def\notetitlepos{150pt}
 \def\notetitleh{20pt}
@@ -160,7 +160,7 @@ $
 \def\notetitleoffest{80pt}
 \drawnote
 $
-$\footnotesize
+$\kern{4pt}\footnotesize
 {}^{\begin{array}{l}
 \sf{这是发布到公共领域的免费且不受阻碍的源码。}\\
 \\
@@ -191,15 +191,15 @@ $
 \color{#00B8D4}
 \rule{2pt}{170pt}
 \color{#E5F8FB}
-\rule[150pt]{230pt}{20pt}
+\rule[150pt]{240pt}{20pt}
 \color{#e8e8e8}\rule{0.5pt}{170pt}
 \color{#f5f5f5}\rule{0.5pt}{170pt}
 \color{#fafafa}\rule{0.5pt}{170pt}
-\kern{-230pt}\kern{-1.5pt}
-\color{#bfbfbf}\rule[0pt]{230pt}{0pt}\kern{-230pt}
-\color{#d6d6d6}\rule[-0.5pt]{230pt}{0pt}\kern{-230pt}
-\color{#ececec}\rule[-1pt]{230pt}{0pt}\kern{-230pt}
-\color{#f8f8f8}\rule[-1.5pt]{230pt}{0pt}\kern{-230pt}
+\kern{-240pt}\kern{-1.5pt}
+\color{#bfbfbf}\rule[0pt]{240pt}{0pt}\kern{-240pt}
+\color{#d6d6d6}\rule[-0.5pt]{240pt}{0pt}\kern{-240pt}
+\color{#ececec}\rule[-1pt]{240pt}{0pt}\kern{-240pt}
+\color{#f8f8f8}\rule[-1.5pt]{240pt}{0pt}\kern{-240pt}
 \color{black}
 % 画标题
 \raisebox{150pt}{
@@ -212,9 +212,9 @@ $
     }
   }
 }
-\kern{-70pt}
+\kern{-300pt}
 $.$\footnotesize
-{}^{
+{}^{\kern{4pt}
 \begin{array}{l}
 \textsf{这是发布到公共领域的免费且不受阻碍的源码。}\\
 \\
@@ -238,3 +238,26 @@ $.$\footnotesize
 \end{array}
 }
 $
+
+示例2：单行-讨论区版
+
+$%删去了不必要的内容
+\color{#00B8D4}
+\rule{2pt}{44pt}
+\color{#E5F8FB}
+\rule[24pt]{200pt}{20pt}
+\color{#e8e8e8}\rule{0.5pt}{44pt}
+\color{#f5f5f5}\rule{0.5pt}{44pt}
+\color{#fafafa}\rule{0.5pt}{44pt}
+\kern{-200pt}\kern{-1.5pt}
+\color{#bfbfbf}\rule[0pt]{200pt}{0pt}\kern{-200pt}
+\color{#d6d6d6}\rule[-0.5pt]{200pt}{0pt}\kern{-200pt}
+\color{#ececec}\rule[-1pt]{200pt}{0pt}\kern{-200pt}
+\color{#f8f8f8}\rule[-1.5pt]{200pt}{0pt}\kern{-200pt}
+\color{black}
+\raisebox{24pt}{ \raisebox{6pt}{ \kern{-1pt}
+\color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
+\raisebox{1.5pt}{ \color{#404040}\footnotesize
+\kern{-4pt}\sf\bf{这是一个信息}
+}}}\kern{-200pt}$.
+$\kern{4pt}\raisebox{10pt}{\footnotesize\sf{是单行的}}$
