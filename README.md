@@ -3,6 +3,5 @@
 
 drawnote : 绘制一个注释
 
-![](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote1.jpg)
-
-![](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/drawnote.jpg)
+<a href="url"><img src="drawnote1.jpg" align="left" height="638" width="250" ></a>
+![](drawnote.jpg)
