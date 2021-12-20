@@ -1,5 +1,7 @@
 布局和颜色参考了 [Collapsible Blocks](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#removing-the-title)
 
+- 收到反馈，某些 emoji 在其他平台下会变成奇怪的样子，甚至会直接消失。一些字符可以通过使用其他字母代替（如 ℹ -> i）来解决，但是大部分 emoji 尚未找到解决方案，如果您知道如何解决，欢迎私信本人
+
 $
 \def\notew{200pt}
 \def\noteh{44pt}
@@ -11,7 +13,7 @@ $
 % 标题如果不是两字则需要调整
 \def\notetitleoffest{37pt}
 \def\noteNote{
-  \def\notech{\kern{-1pt}✒\kern{0.5pt}}
+  \def\notech{\kern{-1.5pt}✒\kern{0.5pt}}
   \noteSetT{注意}
   \def\notelcol{#448AFF}\def\notetcol{#ECF3FF}
 }
@@ -21,7 +23,7 @@ $
   \def\notelcol{#00B0FF}\def\notetcol{#E5F7FF}
 }
 \def\noteInfo{
-  \def\notech{\kern{2pt}ℹ\kern{5.5pt}}
+  \def\notech{\kern{2pt}\bf{i}\kern{5.5pt}}
   \noteSetT{信息}
   \def\notelcol{#00B8D4}\def\notetcol{#E5F8FB}
 }
@@ -31,8 +33,8 @@ $
   \def\notelcol{#00BFA5}\def\notetcol{#E5F8F6}
 }
 \def\noteOk{
-  \def\notech{\kern{-0.7pt}✔\kern{2.5pt}}
-  \noteSetT{示例}
+  \def\notech{\kern{-2.0pt}\bf{√}\kern{2.4pt}}
+  \noteSetT{示例\kern{-0.5pt}}
   \def\notelcol{#00C853}\def\notetcol{#E5F9ED}
 }
 \def\noteQ{
@@ -46,7 +48,7 @@ $
   \def\notelcol{#FF9100}\def\notetcol{#FFF4E5}
 }
 \def\noteFail{
-  \def\notech{\kern{-1pt}✖\kern{2.6pt}}
+  \def\notech{\kern{-2.4pt}\Large\bf{×}\kern{1.6pt}}
   \noteSetT{失败}
   \def\notelcol{#FF5252}\def\notetcol{#FFEDED}
 }
@@ -126,7 +128,7 @@ $
 }
 \def\notetitleoffest{40pt}
 \def\noteInfo{
-  \def\notech{\kern{2pt}ℹ\kern{5.5pt}}
+  \def\notech{\kern{2pt}\bf{i}\kern{5.5pt}}
   \noteSetT{信息}
   \def\notelcol{#00B8D4}\def\notetcol{#E5F8FB}
 }
@@ -186,7 +188,7 @@ $\kern{4pt}\footnotesize
 \end{array}}
 $
 
-经过修改后可在讨论区发布的版本（unidode 字符 ℹ 在讨论区渲染不了，改用加粗字符 i）
+经过修改后可在讨论区发布的版本：
 
 $
 % 画框和阴影
