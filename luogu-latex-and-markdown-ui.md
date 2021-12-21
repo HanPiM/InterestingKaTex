@@ -152,6 +152,7 @@ $
   可直接使用对应命令/字符。
   
   2. 圆角矩形\
+    缺点：无法自定义圆角大小\
     $
     \def\w{100pt}\def\h{61pt}
     \def\arcoffest{54.7pt}
@@ -180,7 +181,28 @@ $
   \raisebox{-6pt}{◞}\kern{-0.5pt}
   $
   ```
-  3. 简单图片
+  3. 阴影\
+    原理：绘制渐变色\
+    $\def\w{100pt}
+    \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+    \drawx{#bfbfbf}{0pt}
+    \drawx{#d6d6d6}{-0.5pt}
+    \drawx{#ececec}{-1.0pt}
+    \drawx{#f8f8f8}{-1.5pt}
+    $
+  ```
+  $\def\w{100pt}
+  \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+  \drawx{#bfbfbf}{0pt}
+  \drawx{#d6d6d6}{-0.5pt}
+  \drawx{#ececec}{-1.0pt}
+  \drawx{#f8f8f8}{-1.5pt}
+  $
+  ```
+  4. 简单图片\
+  原理：逐一绘制像素\
+  可优化：对位于同一列/行的像素一起绘制\
+  缺点：洛谷貌似对公式中元素的数量有限制，绘制大小有限
   
 $\newcommand{\x}{0}\newcommand{\bitsize}{2mm}\newcommand{\b}[1]{\color{#1}\rule[\x mm]{\bitsize}{\bitsize}}\newcommand{\bw}{\bitsize}\newcommand {\w}{26mm}\newcommand{\rx}[1]{\renewcommand{\x}{#1}}
 \newcommand{\k}{\kern{-\w}}
@@ -205,6 +227,7 @@ $
 
   0. 原理\
     Markdown 的链接名支持使用 $\LaTeX$
+    
   1. 简单示例
   
    [$
@@ -218,6 +241,67 @@ $
    \raisebox{4.5pt}{\footnotesize\sf Button}
    $]()
    ```
+   
+  2. 带边框的圆角按钮
   
-#### 最后、确定发布位置
+  [$
+  \def\w{40pt}\def\h{10pt}
+  \def\arcoffest{3.7pt}
+  \color{#bebebe}
+  \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+  \raisebox{\arcoffest}{◜}\kern{-5pt}
+  \rule[\h]{\w}{0pt}
+  \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+  \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+  \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+  \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+  \raisebox{-6pt}{◞}
+  \kern{-\w}\color{#404040}\kern{5pt}
+  \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+  $]()
+  
+  ```
+  [$
+  \def\w{40pt}\def\h{10pt}
+  \def\arcoffest{3.7pt}
+  \color{#bebebe}
+  \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+  \raisebox{\arcoffest}{◜}\kern{-5pt}
+  \rule[\h]{\w}{0pt}
+  \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+  \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+  \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+  \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+  \raisebox{-6pt}{◞}
+  \kern{-\w}\color{#404040}\kern{5pt}
+  \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+  $]()
+  ```
+  
+  3. 伪立体按钮\
+    原理：~~选好颜色~~
+    
+  [$\kern{10pt}
+  \color{#F6F8FA}\rule{79pt}{22pt}
+  \kern{-66pt}
+  \raisebox{9pt}{
+  \color{#24292F}\sf{\footnotesize 这是一个按钮}
+  }\kern{-65pt}
+  \color{#D5D8DA}\rule{77pt}{0pt}\kern{1pt}
+  \rule[1pt]{0.1pt}{20pt}
+  $]()
+  
+  ```
+  [$\kern{10pt}
+  \color{#F6F8FA}\rule{79pt}{22pt}
+  \kern{-66pt}
+  \raisebox{9pt}{
+  \color{#24292F}\sf{\footnotesize 这是一个按钮}
+  }\kern{-65pt}
+  \color{#D5D8DA}\rule{77pt}{0pt}\kern{1pt}
+  \rule[1pt]{0.1pt}{20pt}
+  $]()
+  ```
+  
+#### 附
   讨论区与剪贴板和博客不同，讨论区的无法渲染使用了 `\def`、`\newcommand`、`\renewcommand` 等宏命令的源码，因此
