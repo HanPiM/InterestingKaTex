@@ -1,4 +1,5 @@
 ## luogu-latex-and-markdown-ui
+此文长期更新
 
 $
 % 画框和阴影
