@@ -215,7 +215,7 @@ $
   ```
   5. 简单图片\
   原理：逐一绘制像素\
-  可优化：对位于同一列/行的像素一起绘制\
+  可优化：对位于同一列/行的同颜色像素一起绘制\
   缺点：洛谷貌似对公式中元素的数量有限制，绘制大小有限
   
 $\newcommand{\x}{0}\newcommand{\bitsize}{2mm}\newcommand{\b}[1]{\color{#1}\rule[\x mm]{\bitsize}{\bitsize}}\newcommand{\bw}{\bitsize}\newcommand {\w}{26mm}\newcommand{\rx}[1]{\renewcommand{\x}{#1}}
@@ -242,7 +242,7 @@ $
   1. 原理\
     Markdown 的链接名支持使用 $\LaTeX$
     
-  2. 简单示例
+  2. 简单按钮
   
    [$
    \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
