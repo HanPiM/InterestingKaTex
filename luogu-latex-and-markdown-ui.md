@@ -128,48 +128,170 @@ $
 \noteWarn\drawnote
 $
 
-#### 零、 重要命令
-  
+本文为方便，在文中常用 “块” 指代一段 $\LaTeX$ 公式。
+
+#### 零、 基础命令
+  如果想要使用 $\LaTeX$ + Markdown 编写简易 UI，您应当对一下命令非常熟悉。
   - `\rule[offest]{w}{h}` 绘制一个矩形
 
+    例：\
     $\rule{10pt}{6pt}$ `\rule{10pt}{6pt}`
     $\rule[5pt]{10pt}{6pt}$ `\rule[5pt]{10pt}{6pt}`
   
     $\rule[-20pt]{10pt}{6pt}$ `\rule[-20pt]{10pt}{6pt}`
     $\rule[20pt]{10pt}{6pt}$ `\rule[20pt]{10pt}{6pt}`
   
-    注意：如果指定的 `offest` 超出了当前块的范围，则会使当前块的高度改变以容纳绘制的矩形，而不是穿插到其他块。
-    注意2：绘制的矩形会挡住同一层的文字，使用 `\raisebox` 或在另一个块输出可以解决。
+    注意：
+    - 如果指定的 `offest` 超出了当前块的范围，则会使当前块的高度改变以容纳绘制的矩形，而不是穿插到其他块。
+    - 绘制的矩形会挡住同一层的文字，使用 `\raisebox` 或在另一个块输出可以解决。
   
-  - `\raisebox{offest}{source}` 上下移动文本
+  - `\raisebox{offest}{source}` 将文本 source 上移 offest（可以为负） 后输出
   
+    例：\
     text $\raisebox{20pt}{text}$ `\raisebox{20pt}{text}`
   
-    同 `\rule` 一样不会穿插到其他块。
-  
-    注意：在行内公式中，内容不能含有数学公式。在行间公式中，如果内容包裹在 `$...$` 中，则可以含有数学公式。
+    注意：
+    - 同 `\rule` 一样不会穿插到其他块。
+    - 在行内公式中，内容不能含有数学公式。在行间公式中，如果内容包裹在 `$...$` 中，则可以含有数学公式。
     $$\sin\raisebox{5pt}{$\tan$}\cos$$
   
-  - `\kern{offest}` 设置间距（或者说是移动当前位置）
+  - `\kern{offest}` 输出间距（或者说是移动当前位置），其中 offest 可以为负
     
+    例：\
     $\tt a \kern{50pt} b$ `\tt a \kern{50pt} b`
     
     $\tt a \kern{-15pt} b\kern{15pt}$ `\tt a \kern{-15pt} b\kern{15pt}`
+    
+  理论上，综合 `\raisebox` 与 `\kern` 即可在页面上任何位置输出。
   
-  使用 `\raisebox` 和 `\kern` 可以实现大量有趣的排版。
+#### 一、绘制
+
+1. 基础绘制
+
+    对于常见的基本图形（如 $\huge\bigcirc$ `\huge\bigcirc` ）
+    可直接使用对应命令/字符。
+
+    但对于稍微复杂的图形，我们很难找到某个可以满足要求的字符/命令。此时我们则需要将多个基本图形结合到一起以达到目标效果。
+
+    示例：
+
+    - 圆角矩形边框
+
+      可以拆分成 4 条线段和 4 段 $\dfrac{1}{4}$ 圆弧。
+
+      对于线段，可直接使用 `\rule` 绘制。\
+      对于圆弧，由于 $\LaTeX$ 中没有 $\dfrac{1}{4}$ 圆弧的命令，所以使用特殊字符： `◜◝◟◞` 
+
+      缺点：无法自定义圆角大小，无法在讨论区渲染。
+
+      $
+      \def\w{100pt}\def\h{61pt}
+      \def\arcoffest{54.7pt}
+      \color{#bebebe}
+      \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+      \raisebox{\arcoffest}{◜}\kern{-5pt}
+      \rule[\h]{\w}{0pt}
+      \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+      \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+      \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+      \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+      \raisebox{-6pt}{◞}\kern{-0.5pt}
+      $
+      ```
+      $
+      \def\w{100pt}\def\h{61pt}
+      \def\arcoffest{54.7pt}
+      \color{#bebebe}
+      \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+      \raisebox{\arcoffest}{◜}\kern{-5pt}
+      \rule[\h]{\w}{0pt}
+      \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+      \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+      \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+      \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+      \raisebox{-6pt}{◞}\kern{-0.5pt}
+      $
+      ```
+      
+2. 绘制特殊效果
   
-#### 一、形状的绘制
-  1. 原理\
-    矩形+特殊字符 的排版
-  2. 简单图形\
-  如 $\huge\bigcirc$ `\huge\bigcirc`\
-  可直接使用对应命令/字符。
+      - 阴影
+      
+        原理：绘制由灰到白的渐变色。（计算渐变色的方法有很多，但那超出了本文的范围）
+        
+        示例：
+    
+        $\def\w{100pt}
+        \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+        \drawx{#bfbfbf}{0pt}
+        \drawx{#d6d6d6}{-0.5pt}
+        \drawx{#ececec}{-1.0pt}
+        \drawx{#f8f8f8}{-1.5pt}
+        $
+      
+        ```
+        $\def\w{100pt}
+        \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+        \drawx{#bfbfbf}{0pt}
+        \drawx{#d6d6d6}{-0.5pt}
+        \drawx{#ececec}{-1.0pt}
+        \drawx{#f8f8f8}{-1.5pt}
+        $
+        ```
+      
+  3. 杂项
   
-  3. 圆角矩形\
-    缺点：无法自定义圆角大小，无法在讨论区渲染\
-    $
-    \def\w{100pt}\def\h{61pt}
-    \def\arcoffest{54.7pt}
+      - 简单图片
+
+        原理：逐一绘制像素\
+        缺点：洛谷貌似对公式中元素的数量有限制，绘制大小有限\
+        可优化：对位于同一列/行的同颜色像素一起绘制
+
+        $\newcommand{\x}{0}\newcommand{\bitsize}{2mm}\newcommand{\b}[1]{\color{#1}\rule[\x mm]{\bitsize}{\bitsize}}\newcommand{\bw}{\bitsize}\newcommand {\w}{26mm}\newcommand{\rx}[1]{\renewcommand{\x}{#1}}
+        \newcommand{\k}{\kern{-\w}}
+        \b{#281e0b}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
+        \k\rx{2}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
+        \k\rx{4}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
+        \k\rx{6}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#fff}
+        \k\rx{8}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#fff}\b{#181818}
+        \k\rx{10}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#d8d8d8}\b{#181818}
+        \k\rx{12}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#181818}\b{#c1c1c1}\b{#181818}
+        \k\rx{14}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#181818}\b{#c1c1c1}\b{#181818}
+        \k\rx{16}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#c1c1c1}\b{#d8d8d8}\b{#181818}
+        \k\rx{18}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#d8d8d8}\b{#c1c1c1}\b{#181818}\b{#fff}
+        \k\rx{20}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#181818}\b{#181818}\b{#181818}\b{#c1c1c1}\b{#c1c1c1}\b{#896727}\b{#281e0b}\b{#fff}
+        \k\rx{22}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#fff}\b{#d8d8d8}\b{#c1c1c1}\b{#c1c1c1}\b{#d8d8d8}\b{#444}\b{#493615}\b{#684e1e}\b{#fff}
+        \k\rx{24}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#444}\b{#444}\b{#444}\b{#444}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
+        $ （这是游戏 [minecraft](https://www.minecraft.net) 中的工具：铁镐）
+
+        代码较长，详见[此](https://www.luogu.com.cn/paste/ge525sta)
+       
+  
+#### 二、按钮
+
+  原理：Markdown 的链接名称支持使用 $\LaTeX$
+    
+1. 简单按钮
+  
+    [$
+    \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
+    \raisebox{4.7pt}{\footnotesize\sf Button}
+    $]()
+   
+    ```
+    [$
+    \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
+    \raisebox{4.7pt}{\footnotesize\sf Button}
+    $]()
+    ```
+   
+2. 带边框的圆角按钮
+  
+    其实就是 圆角边框+文本 的组合。
+
+    [$
+    \def\w{40pt}\def\h{10pt}
+    \def\arcoffest{3.7pt}
     \color{#bebebe}
     \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
     \raisebox{\arcoffest}{◜}\kern{-5pt}
@@ -178,145 +300,53 @@ $
     \rule[-3pt]{0.5pt}{\h}\kern{-\w}
     \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
     \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-    \raisebox{-6pt}{◞}\kern{-0.5pt}
-    $
-  ```
-  $
-  \def\w{100pt}\def\h{61pt}
-  \def\arcoffest{54.7pt}
-  \color{#bebebe}
-  \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
-  \raisebox{\arcoffest}{◜}\kern{-5pt}
-  \rule[\h]{\w}{0pt}
-  \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
-  \rule[-3pt]{0.5pt}{\h}\kern{-\w}
-  \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
-  \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-  \raisebox{-6pt}{◞}\kern{-0.5pt}
-  $
-  ```
-  4. 阴影\
-    原理：绘制渐变色\
-    $\def\w{100pt}
-    \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
-    \drawx{#bfbfbf}{0pt}
-    \drawx{#d6d6d6}{-0.5pt}
-    \drawx{#ececec}{-1.0pt}
-    \drawx{#f8f8f8}{-1.5pt}
-    $
-  ```
-  $\def\w{100pt}
-  \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
-  \drawx{#bfbfbf}{0pt}
-  \drawx{#d6d6d6}{-0.5pt}
-  \drawx{#ececec}{-1.0pt}
-  \drawx{#f8f8f8}{-1.5pt}
-  $
-  ```
-  5. 简单图片\
-  原理：逐一绘制像素\
-  可优化：对位于同一列/行的同颜色像素一起绘制\
-  缺点：洛谷貌似对公式中元素的数量有限制，绘制大小有限
-  
-$\newcommand{\x}{0}\newcommand{\bitsize}{2mm}\newcommand{\b}[1]{\color{#1}\rule[\x mm]{\bitsize}{\bitsize}}\newcommand{\bw}{\bitsize}\newcommand {\w}{26mm}\newcommand{\rx}[1]{\renewcommand{\x}{#1}}
-\newcommand{\k}{\kern{-\w}}
-\b{#281e0b}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
-\k\rx{2}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
-\k\rx{4}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
-\k\rx{6}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#fff}
-\k\rx{8}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#fff}\b{#181818}
-\k\rx{10}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#fff}\b{#fff}\b{#181818}\b{#d8d8d8}\b{#181818}
-\k\rx{12}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#fff}\b{#fff}\b{#181818}\b{#c1c1c1}\b{#181818}
-\k\rx{14}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#896727}\b{#281e0b}\b{#fff}\b{#181818}\b{#c1c1c1}\b{#181818}
-\k\rx{16}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#684e1e}\b{#281e0b}\b{#c1c1c1}\b{#d8d8d8}\b{#181818}
-\k\rx{18}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#493615}\b{#d8d8d8}\b{#c1c1c1}\b{#181818}\b{#fff}
-\k\rx{20}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#181818}\b{#181818}\b{#181818}\b{#c1c1c1}\b{#c1c1c1}\b{#896727}\b{#281e0b}\b{#fff}
-\k\rx{22}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#fff}\b{#d8d8d8}\b{#c1c1c1}\b{#c1c1c1}\b{#d8d8d8}\b{#444}\b{#493615}\b{#684e1e}\b{#fff}
-\k\rx{24}\b{#fff}\b{#fff}\b{#fff}\b{#fff}\b{#444}\b{#444}\b{#444}\b{#444}\b{#444}\b{#fff}\b{#fff}\b{#fff}\b{#fff}
-$ 
-（这是游戏 [minecraft](https://www.minecraft.net) 中的工具：铁镐）
+    \raisebox{-6pt}{◞}
+    \kern{-\w}\color{#404040}\kern{5pt}
+    \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+    $]()
 
-代码较长，详见[此](https://www.luogu.com.cn/paste/ge525sta)
+    ```
+    [$
+    \def\w{40pt}\def\h{10pt}
+    \def\arcoffest{3.7pt}
+    \color{#bebebe}
+    \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+    \raisebox{\arcoffest}{◜}\kern{-5pt}
+    \rule[\h]{\w}{0pt}
+    \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+    \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+    \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+    \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+    \raisebox{-6pt}{◞}
+    \kern{-\w}\color{#404040}\kern{5pt}
+    \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+    $]()
+    ```
+3. 伪立体按钮
   
-#### 二、按钮
+    原理：
+    
+    [$
+    \color{#F6F8FA}\rule{59pt}{16pt}
+    \kern{-53pt}
+    \raisebox{6pt}{
+    \color{#24292F}\sf{\scriptsize 这是一个按钮}
+    }\kern{-52pt}
+    \color{#D5D8DA}\rule{57pt}{0pt}\kern{0.5pt}
+    \rule[1pt]{0.1pt}{15pt}
+    $]()
 
-  1. 原理\
-    Markdown 的链接名支持使用 $\LaTeX$
-    
-  2. 简单按钮
-  
-   [$
-   \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
-   \raisebox{4.5pt}{\footnotesize\sf Button}
-   $]()
-   
-   ```
-   [$
-   \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
-   \raisebox{4.5pt}{\footnotesize\sf Button}
-   $]()
-   ```
-   
-  3. 带边框的圆角按钮
-  
-  [$
-  \def\w{40pt}\def\h{10pt}
-  \def\arcoffest{3.7pt}
-  \color{#bebebe}
-  \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
-  \raisebox{\arcoffest}{◜}\kern{-5pt}
-  \rule[\h]{\w}{0pt}
-  \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
-  \rule[-3pt]{0.5pt}{\h}\kern{-\w}
-  \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
-  \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-  \raisebox{-6pt}{◞}
-  \kern{-\w}\color{#404040}\kern{5pt}
-  \raisebox{-0.3pt}{\sf{\footnotesize Button}}
-  $]()
-  
-  ```
-  [$
-  \def\w{40pt}\def\h{10pt}
-  \def\arcoffest{3.7pt}
-  \color{#bebebe}
-  \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
-  \raisebox{\arcoffest}{◜}\kern{-5pt}
-  \rule[\h]{\w}{0pt}
-  \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
-  \rule[-3pt]{0.5pt}{\h}\kern{-\w}
-  \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
-  \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-  \raisebox{-6pt}{◞}
-  \kern{-\w}\color{#404040}\kern{5pt}
-  \raisebox{-0.3pt}{\sf{\footnotesize Button}}
-  $]()
-  ```
-  
-  4. 伪立体按钮\
-    原理：~~选好颜色~~
-    
-  [$\kern{10pt}
-  \color{#F6F8FA}\rule{79pt}{22pt}
-  \kern{-66pt}
-  \raisebox{9pt}{
-  \color{#24292F}\sf{\footnotesize 这是一个按钮}
-  }\kern{-65pt}
-  \color{#D5D8DA}\rule{77pt}{0pt}\kern{1pt}
-  \rule[1pt]{0.1pt}{20pt}
-  $]()
-  
-  ```
-  [$\kern{10pt}
-  \color{#F6F8FA}\rule{79pt}{22pt}
-  \kern{-66pt}
-  \raisebox{9pt}{
-  \color{#24292F}\sf{\footnotesize 这是一个按钮}
-  }\kern{-65pt}
-  \color{#D5D8DA}\rule{77pt}{0pt}\kern{1pt}
-  \rule[1pt]{0.1pt}{20pt}
-  $]()
-  ```
+    ```
+    [$
+    \color{#F6F8FA}\rule{59pt}{16pt}
+    \kern{-53pt}
+    \raisebox{6pt}{
+    \color{#24292F}\sf{\scriptsize 这是一个按钮}
+    }\kern{-52pt}
+    \color{#D5D8DA}\rule{57pt}{0pt}\kern{0.5pt}
+    \rule[1pt]{0.1pt}{15pt}
+    $]()
+    ```
   
 #### 附 A - 其他注意事项
   讨论区与剪贴板和博客不同，讨论区的无法渲染使用了 `\def`、`\newcommand`、`\renewcommand` 等宏命令的源码，因此如果需要发布到讨论区，需将所有宏替换回对应字符。
