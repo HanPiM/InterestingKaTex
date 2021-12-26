@@ -1,3 +1,7 @@
+此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/xdfqclyv) 。
+
+---
+
 ### 模块二：无交互控件
 
 1. 信息角标

@@ -1,3 +1,7 @@
+此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/xdfqclyv) 。
+
+---
+
 ### 模块一：基础部分
 
 #### 一、编辑环境
@@ -26,7 +30,7 @@
     例：
     text $\raisebox{20pt}{text}$ `\raisebox{20pt}{text}`
   
-    注意：\
+    注意：
     - 同 `\rule` 一样不会穿插到其他块。
     - 在行内公式中，内容不能含有数学公式。在行间公式中，如果内容包裹在 `$...$` 中，则可以含有数学公式。
     $$\sin\raisebox{5pt}{$\tan$}\cos$$

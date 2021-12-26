@@ -1,7 +1,7 @@
 ## luogu-latex-and-markdown-ui
 此文长期更新
 
-[Also on Github](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/luogu-latex-and-markdown-ui.md)
+[Also on Github](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/llui/main.md)
 
 $
 % 画框和阴影
