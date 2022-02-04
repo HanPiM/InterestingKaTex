@@ -73,7 +73,7 @@ $
 
 - [模块二：无交互控件](https://www.luogu.com.cn/paste/xdfqclyv)
 
-- [模块三：交互控件](https://www.luogu.com.cn/paste/xdfqclyv)
+- [模块三：交互控件](https://www.luogu.com.cn/paste/qj1t8xv5)
 
 
 - 附 A - 其他注意事项
