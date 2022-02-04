@@ -1,172 +1,84 @@
-此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/xdfqclyv) 。
+此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/om2r4sar) 。
 
 ---
 
-### 模块二：无交互控件
+### 模块三：交互控件
 
-1. 信息角标
-
-    $
-    \def\w{4.5px}
-    {\color{#FA5151}
-    \LARGE\bullet
-    \kern{-3.7px}
-    \rule[1px]{\w}{6.15px}
-    \kern{-3.7px}
-    \LARGE\bullet}
-    \kern{-\w}\kern{-5.9px}
-    \color{white}
-    \raisebox{2.2px}{\tiny\textsf{99}}
-    $
-    $
-    \def\w{8.5px}
-    {\color{#1485EE}
-    \LARGE\bullet
-    \kern{-3.7px}
-    \rule[1px]{\w}{6.15px}
-    \kern{-3.7px}
-    \LARGE\bullet}
-    \kern{-\w}\kern{-5.9px}
-    \color{white}
-    \raisebox{2.2px}{\tiny\textsf{new}}
-    $
+原理：Markdown 的链接名称支持使用 $\LaTeX$
     
-    这个比较容易实现，使用 两个圆 + 一个矩形 就可以画出。
+1. 简单按钮
+  
+    [$
+    \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
+    \raisebox{4.7pt}{\footnotesize\sf Button}
+    $]()
+   
+    ```
+    [$
+    \rule{40pt}{14pt}\kern{-31.5pt}\color{white}
+    \raisebox{4.7pt}{\footnotesize\sf Button}
+    $]()
+    ```
+   
+2. 带边框的圆角按钮
+  
+    其实就是 圆角边框+文本 的组合。
+
+    [$
+    \def\w{40pt}\def\h{10pt}
+    \def\arcoffest{3.7pt}
+    \color{#bebebe}
+    \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+    \raisebox{\arcoffest}{◜}\kern{-5pt}
+    \rule[\h]{\w}{0pt}
+    \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+    \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+    \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+    \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+    \raisebox{-6pt}{◞}
+    \kern{-\w}\color{#404040}\kern{5pt}
+    \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+    $]()
 
     ```
-    $
-    \def\w{4.5px}
-    {\color{#FA5151}
-    \LARGE\bullet
-    \kern{-3.7px}
-    \rule[1px]{\w}{6.15px}
-    \kern{-3.7px}
-    \LARGE\bullet}
-    \kern{-\w}\kern{-5.9px}
-    \color{white}
-    \raisebox{2.2px}{\tiny\textsf{99}}
-    $
+    [$
+    \def\w{40pt}\def\h{10pt}
+    \def\arcoffest{3.7pt}
+    \color{#bebebe}
+    \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+    \raisebox{\arcoffest}{◜}\kern{-5pt}
+    \rule[\h]{\w}{0pt}
+    \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+    \rule[-3pt]{0.5pt}{\h}\kern{-\w}
+    \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+    \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+    \raisebox{-6pt}{◞}
+    \kern{-\w}\color{#404040}\kern{5pt}
+    \raisebox{-0.3pt}{\sf{\footnotesize Button}}
+    $]()
     ```
-
-2. 信息块
-
-    1. 简单的信息块
+3. 伪立体按钮
+  
+    原理：
     
-        $
-        % w, h, fillcol, bordercol
-        \newcommand\BorderRect[4]{
-          \color{#3}\rule{#1}{#2}\kern{-#1}
-          \color{#4}\rule{0.5px}{#2}\kern{-0.5px}
-          \rule{#1}{0px}\rule{0.5px}{#2}\kern{-0.5px}
-          \kern{-#1}\rule[#2]{#1}{0px}
-        }
-        % w, h, title, subtitle, fillcol, iconch ,iconcol
-        \newcommand\BasicInfoBarFather[7]{
-          \BorderRect{#1}{#2}{#5}{ghostwhite}
-          \kern{-#1}
-          \raisebox{#2}{
-            \raisebox{-26pt}{
-              \color{black}\kern{-4px}
-              \raisebox{7px}{
-                \color{#7}\Huge{∙}\kern{-1px}
-              }
-              \raisebox{10.6px}{
-                \kern{-20.2px}
-                \color{white}\scriptsize\textbf{#6}
-              }
-              \kern{-7px}\footnotesize
-              \raisebox{10.2px}{\textbf{\textsf{#3}}}\kern{2px}
-              \raisebox{10.2px}{\textsf{#4}}
-            }
-          }
-        }
-        \def\BasicInfoBarColorFill{#F4F4F4}\def\BasicInfoBarColorIcon{#0078D4}
-        \def\BasicWarnBarColorFill{#FFF4CE}\def\BasicWarnBarColorIcon{#9D5D00}
-        \def\BasicOkBarColorFill{#DFF6DD}\def\BasicOkBarColorIcon{#0F7B0F}
-        \def\BasicErrBarColorFill{#FDE7E9}\def\BasicErrBarColorIcon{#C42B1C}
-        \newcommand\BasicInfoBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicInfoBarColorFill}{i}{\BasicInfoBarColorIcon}
-        }
-        \newcommand\BasicWarnBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicWarnBarColorFill}{i}{\BasicWarnBarColorIcon}
-        }
-        \newcommand\BasicOkBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicOkBarColorFill}
-          {\tiny\kern{-2px}\raisebox{0.8px}{√}}
-          {\BasicOkBarColorIcon}
-        }
-        \newcommand\BasicErrBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicErrBarColorFill}
-          {\kern{-2px}\raisebox{0.6px}{×}}
-          {\BasicErrBarColorIcon}
-        }
-        \BasicInfoBar{200px}{26px}{标题}{副标题}\\
-        \BasicWarnBar{200px}{26px}{标题}{副标题}\\
-        \BasicOkBar{200px}{26px}{标题}{副标题}\\
-        \BasicErrBar{200px}{26px}{标题}{副标题}\\
-        $
-        
-        ```
-        $
-        % w, h, fillcol, bordercol
-        \newcommand\BorderRect[4]{
-          \color{#3}\rule{#1}{#2}\kern{-#1}
-          \color{#4}\rule{0.5px}{#2}\kern{-0.5px}
-          \rule{#1}{0px}\rule{0.5px}{#2}\kern{-0.5px}
-          \kern{-#1}\rule[#2]{#1}{0px}
-        }
-        % w, h, title, subtitle, fillcol, iconch ,iconcol
-        \newcommand\BasicInfoBarFather[7]{
-          \BorderRect{#1}{#2}{#5}{ghostwhite}
-          \kern{-#1}
-          \raisebox{#2}{
-            \raisebox{-26pt}{
-              \color{black}\kern{-4px}
-              \raisebox{7px}{
-                \color{#7}\Huge{∙}\kern{-1px}
-              }
-              \raisebox{10.6px}{
-                \kern{-20.2px}
-                \color{white}\scriptsize\textbf{#6}
-              }
-              \kern{-7px}\footnotesize
-              \raisebox{10.2px}{\textbf{\textsf{#3}}}\kern{2px}
-              \raisebox{10.2px}{\textsf{#4}}
-            }
-          }
-        }
-        \def\BasicInfoBarColorFill{#F4F4F4}\def\BasicInfoBarColorIcon{#0078D4}
-        \def\BasicWarnBarColorFill{#FFF4CE}\def\BasicWarnBarColorIcon{#9D5D00}
-        \def\BasicOkBarColorFill{#DFF6DD}\def\BasicOkBarColorIcon{#0F7B0F}
-        \def\BasicErrBarColorFill{#FDE7E9}\def\BasicErrBarColorIcon{#C42B1C}
-        \newcommand\BasicInfoBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicInfoBarColorFill}{i}{\BasicInfoBarColorIcon}
-        }
-        \newcommand\BasicWarnBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicWarnBarColorFill}{i}{\BasicWarnBarColorIcon}
-        }
-        \newcommand\BasicOkBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicOkBarColorFill}
-          {\tiny\kern{-2px}\raisebox{0.8px}{√}}
-          {\BasicOkBarColorIcon}
-        }
-        \newcommand\BasicErrBar[4]{
-          \BasicInfoBarFather{#1}{#2}{#3}{#4}
-          {\BasicErrBarColorFill}
-          {\kern{-2px}\raisebox{0.6px}{×}}
-          {\BasicErrBarColorIcon}
-        }
-        \BasicInfoBar{200px}{26px}{标题}{副标题}\\
-        \BasicWarnBar{200px}{26px}{标题}{副标题}\\
-        \BasicOkBar{200px}{26px}{标题}{副标题}\\
-        \BasicErrBar{200px}{26px}{标题}{副标题}\\
-        $
-        ```
+    [$
+    \color{#F6F8FA}\rule{59pt}{16pt}
+    \kern{-53pt}
+    \raisebox{6pt}{
+    \color{#24292F}\sf{\scriptsize 这是一个按钮}
+    }\kern{-52pt}
+    \color{#D5D8DA}\rule{57pt}{0pt}\kern{0.5pt}
+    \rule[1pt]{0.1pt}{15pt}
+    $]()
 
+    ```
+    [$
+    \color{#F6F8FA}\rule{59pt}{16pt}
+    \kern{-53pt}
+    \raisebox{6pt}{
+    \color{#24292F}\sf{\scriptsize 这是一个按钮}
+    }\kern{-52pt}
+    \color{#D5D8DA}\rule{57pt}{0pt}\kern{0.5pt}
+    \rule[1pt]{0.1pt}{15pt}
+    $]()
+    ```
