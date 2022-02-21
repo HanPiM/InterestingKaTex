@@ -1,4 +1,4 @@
-此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/xdfqclyv) 。
+此文属于 [luogu-latex-and-markdown-ui](https://www.luogu.com.cn/paste/om2r4sar) 。
 
 ---
 
@@ -47,6 +47,8 @@
     \raisebox{2.2px}{\tiny\textsf{99}}
     $
     ```
+
+	综合应用：参见附录-3
 
 2. 信息块
 

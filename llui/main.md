@@ -1,7 +1,8 @@
 ## luogu-latex-and-markdown-ui
 此文长期更新
 
-[Also on Github](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/llui/main.md)
+[Also on Github](https://github.com/HanPiM/InterestingKaTex_ForLuogu/blob/main/luogu-latex-and-markdown-ui.md)
+（一般会慢于洛谷云剪贴板更新，毕竟主要是我自己用来存放历史~~屎山~~代码的）
 
 $
 % 画框和阴影
@@ -56,11 +57,18 @@ $.$\footnotesize
 }
 $
 
-（用这个是因为找不到不需要标注来源的许可证）
+（用这个是因为找不到不需要标注 原作者/所有者 的文章许可证）
 
 重要更新：
 
 - 2021/12/26 拆分成不同模块，此后本文仅作为目录和附录。
+- 2022/02/04 目录贴的链接出现问题，现已修好
+
+细节更新（从 2022/02/?? 开始详细记录）：
+
+- 2022/02/?? 为 附录 增加 用 LaTeX 输出高亮代码
+- 2022/02/18 为 模块一/基础命令 增加 `cancel` 系列命令
+- 2022/02/21 为 模块一/基础命令/`cancel`系列命令 增加 示例 绘制心形曲线
 
 #### 目录
 
@@ -80,7 +88,7 @@ $
 
 - 附 A - 其他注意事项
 - 附 B - 其他样例
-
+- 附 C - 用 $\LaTeX$ 输出高亮代码
 ---
 
 $
@@ -116,7 +124,7 @@ $
     \BasicInfoBarFather{#1}{#2}{#3}{#4}
     {\BasicWarnBarColorFill}{i}{\BasicWarnBarColorIcon}
 }
-\BasicWarnBar{250px}{26px}{注意}{为方便，文中的 “块” 常用于指代一段 \LaTeX 公式。}\\
+\BasicWarnBar{250px}{26px}{注意}{本文为方便，在文中常用 “块” 指代一段 \LaTeX 公式。}\\
 $
 
 ---
@@ -125,131 +133,143 @@ $
   讨论区与剪贴板和博客不同，讨论区的无法渲染使用了 `\def`、`\newcommand`、`\renewcommand` 等宏命令的源码，因此如果需要发布到讨论区，需将所有宏替换回对应字符。
 
 #### 附 B - 其他样例
+  
+  这里是一些不知道该怎么分类的样例
+
   1. [绘制 note](https://www.luogu.com.cn/paste/j29i6yfi)
   2. 未命名示例-1
   
-        $\def\w{200pt}\def\h{64pt}
-        \def\titleoffest{54pt}
-        \def\arcoffest{57.7pt}
-        \def\drawx#1{\color{#1}\rule[-3pt]{0.5pt}{\h}}
-        \drawx{#fafafa}\drawx{#f7f7f7}
-        \drawx{#efefef}
-        \color{#bebebe}
-        \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
-        \raisebox{\arcoffest}{◜}\kern{-5pt}
-        \rule[\h]{\w}{0pt}
-        \raisebox{\titleoffest}{\kern{-10pt}\color{#202020}{\large×}}
-        \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
-        \rule[-3pt]{0.5pt}{\h}\kern{-\w}
-        \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
-        \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-        \raisebox{-6pt}{◞}\kern{-0.5pt}
-        \drawx{#e8e8e8}\drawx{#f5f5f5}
-        \drawx{#fafafa}
-        \kern{-\w}\kern{-5pt}
-        \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
-        \drawx{#bfbfbf}{-6pt}
-        \drawx{#d6d6d6}{-6.5pt}
-        \drawx{#ececec}{-7pt}
-        \drawx{#f8f8f8}{-7.5pt}
-        %
-        \raisebox{\titleoffest}
-        {\kern{9pt}\color{#404040}\tiny\textsf{一个伪窗口}}
-        \kern{-\w}
-        $ $\kern{2pt}$ $%删去了不必要的内容
-        \color{#00B8D4}
-        \rule{2pt}{44pt}
-        \color{#E5F8FB}
-        \rule[24pt]{190pt}{20pt}
-        \color{#e8e8e8}\rule{0.5pt}{44pt}
-        \color{#f5f5f5}\rule{0.5pt}{44pt}
-        \color{#fafafa}\rule{0.5pt}{44pt}
-        \kern{-190pt}\kern{-1.5pt}
-        \color{#bfbfbf}\rule[0pt]{190pt}{0pt}\kern{-190pt}
-        \color{#d6d6d6}\rule[-0.5pt]{190pt}{0pt}\kern{-190pt}
-        \color{#ececec}\rule[-1pt]{190pt}{0pt}\kern{-190pt}
-        \color{#f8f8f8}\rule[-1.5pt]{190pt}{0pt}\kern{-190pt}
-        \color{black}
-        \raisebox{24pt}{ \raisebox{6pt}{ \kern{-1pt}
-        \color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
-        \raisebox{1.5pt}{ \color{#404040}\footnotesize
-        \kern{-4pt}\sf\bf{这是一个伪嵌套到伪窗口上方的信息}
-        }}}\kern{-200pt}$.$\kern{4pt}\raisebox{10pt}{\footnotesize\sf{伪嵌套 2：}}
-        $ $
-        \def\w{130pt}
-        \def\h{18pt}
-        \color{#E4E7E8}
-        \rule[3pt]{0.1pt}{\h}\kern{-0.5pt}
-        \rule[21pt]{\w}{0pt}
-        \rule[3pt]{0.1pt}{\h}\kern{-\w}
-        \color{#0067C0}
-        \rule[3pt]{\w}{0.5pt}\kern{-\w}
-        \color{#616161}
-        \raisebox{10.2pt}
-        {\scriptsize\sf\kern{5pt}这是一个伪文本框
-        }
-        $
+  $\kern{10pt}$
+$\def\w{200pt}\def\h{64pt}
+\def\titleoffest{54pt}
+\def\arcoffest{57.7pt}
+\def\drawx#1{\color{#1}\rule[-3pt]{0.5pt}{\h}}
+\drawx{#fafafa}\drawx{#f7f7f7}
+\drawx{#efefef}
+\color{#bebebe}
+\rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+\raisebox{\arcoffest}{◜}\kern{-5pt}
+\rule[\h]{\w}{0pt}
+\raisebox{\titleoffest}{\kern{-10pt}\color{#202020}{\large×}}
+\kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+\rule[-3pt]{0.5pt}{\h}\kern{-\w}
+\kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+\rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+\raisebox{-6pt}{◞}\kern{-0.5pt}
+\drawx{#e8e8e8}\drawx{#f5f5f5}
+\drawx{#fafafa}
+\kern{-\w}\kern{-5pt}
+\def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+\drawx{#bfbfbf}{-6pt}
+\drawx{#d6d6d6}{-6.5pt}
+\drawx{#ececec}{-7pt}
+\drawx{#f8f8f8}{-7.5pt}
+%
+\raisebox{\titleoffest}
+{\kern{9pt}\color{#404040}\tiny\textsf{一个伪窗口}}
+\kern{-\w}
+$
+$\kern{2pt}$
+$%删去了不必要的内容
+\color{#00B8D4}
+\rule{2pt}{44pt}
+\color{#E5F8FB}
+\rule[24pt]{190pt}{20pt}
+\color{#e8e8e8}\rule{0.5pt}{44pt}
+\color{#f5f5f5}\rule{0.5pt}{44pt}
+\color{#fafafa}\rule{0.5pt}{44pt}
+\kern{-190pt}\kern{-1.5pt}
+\color{#bfbfbf}\rule[0pt]{190pt}{0pt}\kern{-190pt}
+\color{#d6d6d6}\rule[-0.5pt]{190pt}{0pt}\kern{-190pt}
+\color{#ececec}\rule[-1pt]{190pt}{0pt}\kern{-190pt}
+\color{#f8f8f8}\rule[-1.5pt]{190pt}{0pt}\kern{-190pt}
+\color{black}
+\raisebox{24pt}{ \raisebox{6pt}{ \kern{-1pt}
+\color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
+\raisebox{1.5pt}{ \color{#404040}\footnotesize
+\kern{-4pt}\sf\bf{这是一个伪嵌套到伪窗口上方的信息}
+}}}\kern{-200pt}$.
+$\kern{4pt}\raisebox{10pt}{\footnotesize\sf{伪嵌套 2：}}$
+$
+\def\w{130pt}
+\def\h{18pt}
+\color{#E4E7E8}
+\rule[3pt]{0.1pt}{\h}\kern{-0.5pt}
+\rule[21pt]{\w}{0pt}
+\rule[3pt]{0.1pt}{\h}\kern{-\w}
+\color{#0067C0}
+\rule[3pt]{\w}{0.5pt}\kern{-\w}
+\color{#616161}
+\raisebox{10.2pt}
+{\scriptsize\sf\kern{5pt}这是一个伪文本框
+}
+$
 
-        ```
-        $\def\w{200pt}\def\h{64pt}
-        \def\titleoffest{54pt}
-        \def\arcoffest{57.7pt}
-        \def\drawx#1{\color{#1}\rule[-3pt]{0.5pt}{\h}}
-        \drawx{#fafafa}\drawx{#f7f7f7}
-        \drawx{#efefef}
-        \color{#bebebe}
-        \rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
-        \raisebox{\arcoffest}{◜}\kern{-5pt}
-        \rule[\h]{\w}{0pt}
-        \raisebox{\titleoffest}{\kern{-10pt}\color{#202020}{\large×}}
-        \kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
-        \rule[-3pt]{0.5pt}{\h}\kern{-\w}
-        \kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
-        \rule[-6pt]{\w}{0pt}\kern{-4.3pt}
-        \raisebox{-6pt}{◞}\kern{-0.5pt}
-        \drawx{#e8e8e8}\drawx{#f5f5f5}
-        \drawx{#fafafa}
-        \kern{-\w}\kern{-5pt}
-        \def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
-        \drawx{#bfbfbf}{-6pt}
-        \drawx{#d6d6d6}{-6.5pt}
-        \drawx{#ececec}{-7pt}
-        \drawx{#f8f8f8}{-7.5pt}
-        %
-        \raisebox{\titleoffest}
-        {\kern{9pt}\color{#404040}\tiny\textsf{一个伪窗口}}
-        \kern{-\w}
-        $ $\kern{2pt}$ $%删去了不必要的内容
-        \color{#00B8D4}
-        \rule{2pt}{44pt}
-        \color{#E5F8FB}
-        \rule[24pt]{190pt}{20pt}
-        \color{#e8e8e8}\rule{0.5pt}{44pt}
-        \color{#f5f5f5}\rule{0.5pt}{44pt}
-        \color{#fafafa}\rule{0.5pt}{44pt}
-        \kern{-190pt}\kern{-1.5pt}
-        \color{#bfbfbf}\rule[0pt]{190pt}{0pt}\kern{-190pt}
-        \color{#d6d6d6}\rule[-0.5pt]{190pt}{0pt}\kern{-190pt}
-        \color{#ececec}\rule[-1pt]{190pt}{0pt}\kern{-190pt}
-        \color{#f8f8f8}\rule[-1.5pt]{190pt}{0pt}\kern{-190pt}
-        \color{black}
-        \raisebox{24pt}{ \raisebox{6pt}{ \kern{-1pt}
-        \color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
-        \raisebox{1.5pt}{ \color{#404040}\footnotesize
-        \kern{-4pt}\sf\bf{这是一个伪嵌套到伪窗口上方的信息}
-        }}}\kern{-200pt}$.$\kern{4pt}\raisebox{10pt}{\footnotesize\sf{伪嵌套 2：}}
-        $ $
-        \def\w{130pt}
-        \def\h{18pt}
-        \color{#E4E7E8}
-        \rule[3pt]{0.1pt}{\h}\kern{-0.5pt}
-        \rule[21pt]{\w}{0pt}
-        \rule[3pt]{0.1pt}{\h}\kern{-\w}
-        \color{#0067C0}
-        \rule[3pt]{\w}{0.5pt}\kern{-\w}
-        \color{#616161}
-        \raisebox{10.2pt}
-        {\scriptsize\sf\kern{5pt}这是一个伪文本框
-        }
-        $
-        ```
+```
+$\def\w{200pt}\def\h{64pt}
+\def\titleoffest{54pt}
+\def\arcoffest{57.7pt}
+\def\drawx#1{\color{#1}\rule[-3pt]{0.5pt}{\h}}
+\drawx{#fafafa}\drawx{#f7f7f7}
+\drawx{#efefef}
+\color{#bebebe}
+\rule[-3pt]{0.5pt}{\h}\kern{-1.2pt}
+\raisebox{\arcoffest}{◜}\kern{-5pt}
+\rule[\h]{\w}{0pt}
+\raisebox{\titleoffest}{\kern{-10pt}\color{#202020}{\large×}}
+\kern{-4.5pt}\raisebox{\arcoffest}{◝}\kern{-1pt}
+\rule[-3pt]{0.5pt}{\h}\kern{-\w}
+\kern{-6.9pt}\raisebox{-6pt}{◟}\kern{-5pt}
+\rule[-6pt]{\w}{0pt}\kern{-4.3pt}
+\raisebox{-6pt}{◞}\kern{-0.5pt}
+\drawx{#e8e8e8}\drawx{#f5f5f5}
+\drawx{#fafafa}
+\kern{-\w}\kern{-5pt}
+\def\drawx#1#2{\color{#1}\rule[#2]{\w}{0pt}\kern{-\w}}
+\drawx{#bfbfbf}{-6pt}
+\drawx{#d6d6d6}{-6.5pt}
+\drawx{#ececec}{-7pt}
+\drawx{#f8f8f8}{-7.5pt}
+%
+\raisebox{\titleoffest}
+{\kern{9pt}\color{#404040}\tiny\textsf{一个伪窗口}}
+\kern{-\w}
+$
+$\kern{2pt}$
+$%删去了不必要的内容
+\color{#00B8D4}
+\rule{2pt}{44pt}
+\color{#E5F8FB}
+\rule[24pt]{190pt}{20pt}
+\color{#e8e8e8}\rule{0.5pt}{44pt}
+\color{#f5f5f5}\rule{0.5pt}{44pt}
+\color{#fafafa}\rule{0.5pt}{44pt}
+\kern{-190pt}\kern{-1.5pt}
+\color{#bfbfbf}\rule[0pt]{190pt}{0pt}\kern{-190pt}
+\color{#d6d6d6}\rule[-0.5pt]{190pt}{0pt}\kern{-190pt}
+\color{#ececec}\rule[-1pt]{190pt}{0pt}\kern{-190pt}
+\color{#f8f8f8}\rule[-1.5pt]{190pt}{0pt}\kern{-190pt}
+\color{black}
+\raisebox{24pt}{ \raisebox{6pt}{ \kern{-1pt}
+\color{#00B8D4}\large{\kern{2pt}\bf{i}\kern{5.5pt}}
+\raisebox{1.5pt}{ \color{#404040}\footnotesize
+\kern{-4pt}\sf\bf{这是一个伪嵌套到伪窗口上方的信息}
+}}}\kern{-200pt}$.
+$\kern{4pt}\raisebox{10pt}{\footnotesize\sf{伪嵌套 2：}}$
+$
+\def\w{130pt}
+\def\h{18pt}
+\color{#E4E7E8}
+\rule[3pt]{0.1pt}{\h}\kern{-0.5pt}
+\rule[21pt]{\w}{0pt}
+\rule[3pt]{0.1pt}{\h}\kern{-\w}
+\color{#0067C0}
+\rule[3pt]{\w}{0.5pt}\kern{-\w}
+\color{#616161}
+\raisebox{10.2pt}
+{\scriptsize\sf\kern{5pt}这是一个伪文本框
+}
+$
+```
+
+#### 附 C - 用 $\LaTeX$ 输出高亮代码 [link](https://www.luogu.com.cn/paste/bbe9ifkw)
