@@ -59,16 +59,35 @@ $
 
 （用这个是因为找不到不需要标注 原作者/所有者 的文章许可证）
 
+---
+
 重要更新：
 
 - 2021/12/26 拆分成不同模块，此后本文仅作为目录和附录。
 - 2022/02/04 目录贴的链接出现问题，现已修好
 
-细节更新（从 2022/02/?? 开始详细记录）：
+细节更新（添加于 2022/02/??）：
 
 - 2022/02/?? 为 附录 增加 用 LaTeX 输出高亮代码
 - 2022/02/18 为 模块一/基础命令 增加 `cancel` 系列命令
 - 2022/02/21 为 模块一/基础命令/`cancel`系列命令 增加 示例 绘制心形曲线
+- 2022/02/27 为 模块一 调整一些语句
+- 2022/02/27 为 附录 增加 KaTeX 单位（转pt）
+- 2022/03/02 为 附录/附 A 更名 & 完善 讨论区无法使用的命令
+
+---
+
+计划事项（添加于 2022/02/21）：
+
+- 将 LaTeX 的渲染换成图片以方便在其他平台显示 【摆烂中】
+- 完善 [复杂图像绘制程序](https://github.com/HanPiM/katex_complex_img_generator) 【摆烂中】
+- 更名（感觉文章越来越偏离原定标题了。。。）【考虑中】
+
+---
+
+指出错误 & 提出建议：私信本人
+
+---
 
 #### 目录
 
@@ -85,10 +104,13 @@ $
 
 - [模块三：交互控件](https://www.luogu.com.cn/paste/qj1t8xv5)
 
-
-- 附 A - 其他注意事项
+- 附 A - 讨论区无法使用的命令
 - 附 B - 其他样例
 - 附 C - 用 $\LaTeX$ 输出高亮代码
+- 附 D - $\KaTeX$ 单位（转pt）
+
+- 参考资料
+
 ---
 
 $
@@ -128,10 +150,27 @@ $
 $
 
 ---
+#### 附 A - 讨论区无法使用的命令
 
-#### 附 A - 其他注意事项
-  讨论区与剪贴板和博客不同，讨论区的无法渲染使用了 `\def`、`\newcommand`、`\renewcommand` 等宏命令的源码，因此如果需要发布到讨论区，需将所有宏替换回对应字符。
-
+  讨论区的 LaTeX 版本与剪贴板和博客不同。请注意以下：
+  
+  - 宏定义类
+    
+    包括但不限于 `\def \newcommand...`
+    
+    均无法使用。
+    
+  - 换行类
+    
+    `\\ \cr \newline`
+    
+    无法直接使用，但可在 `array gathered` 等排版环境下使用
+    
+  - 其他
+    
+    `\char` : 无法使用
+  
+---
 #### 附 B - 其他样例
   
   这里是一些不知道该怎么分类的样例
@@ -272,4 +311,49 @@ $
 $
 ```
 
+---
 #### 附 C - 用 $\LaTeX$ 输出高亮代码 [link](https://www.luogu.com.cn/paste/bbe9ifkw)
+
+---
+#### 附 D - $\KaTeX$ 单位（转pt）
+
+| KaTeX Unit | Value            | KaTeX Unit | Value               |
+| ---------- | ---------------- | ---------- | ------------------- |
+| em         | CSS em           | bp         | $\dfrac{1}{72}\text{inch}\times F \times G=\dfrac{72.27}{72}\text{pt}$ |
+| ex         | CSS ex           | pc         | $12\text{ pt}$ |
+| mu         | $\dfrac{1}{18}$ CSS em | dd         | $\dfrac{1238}{1157}\text{pt}$ |
+| pt         | $\dfrac{1}{72.27} \text{inch}\times F \times G\Rightarrow1\text{ inch}=\dfrac{72.27\text{ pt}}{F\times G}$ | cc         | $\dfrac{14856}{1157}\text{pt}$ |
+| mm         | $1\text{mm}\times F \times G=\dfrac{1}{100}\text{cm}=\dfrac{7227}{25400}\text{pt}$ | nd         | $\dfrac{685}{642}\text{pt}$ |
+| cm         | $1\text{ cm}\times F \times G=\dfrac{7227}{254}\text{ pt}\quad(1\text{ cm}=\dfrac{1}{2.54}\text{inch})$ | nc         | $\dfrac{1370}{107}\text{pt}$ |
+| in         | $1\text{ inch}\times F \times G=72.27\text{ pt}$ | sp         | $\dfrac{1}{65536}\text{pt}$ |
+
+--- 
+
+参考资料：
+
+- @[Iowa_BattleShip](/user/60181) LaTeX 数学公式大全 \[
+[$\tiny\tt\color{grey}www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan$](
+https://www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan)
+\]
+
+- KaTeX support table \[
+[$\tiny\tt\color{grey}katex.org/docs/support\_table.html$](
+https://katex.org/docs/support_table.html)
+\]
+
+- @[离散小波变换°](/user/68344) KaTeX 画图技巧 - KaTeX 进阶
+\[
+[$\tiny\tt\color{grey}www.luogu.com.cn/paste/wmm62fg7$](https://www.luogu.com.cn/paste/wmm62fg7)
+\]
+
+- @[囧仙](/user/330759) 进行一个 LaTeX 的滥用 \[
+[$\tiny\tt\color{grey}www.luogu.com.cn/blog/over-knee-socks/latex-xetal$](https://www.luogu.com.cn/blog/over-knee-socks/latex-xetal)
+\]
+
+---
+
+一些无聊的统计：
+
+自 2022/2/23 起
+
+- 该页面浏览次数（人次） ![](https://hitwebcounter.com/counter/counter.php?page=7950136&style=0007&nbdigits=9&type=page&initCount=0)（![](https://hitwebcounter.com/counter/counter.php?page=7950138&style=0007&nbdigits=9&type=ip&initCount=0)）
