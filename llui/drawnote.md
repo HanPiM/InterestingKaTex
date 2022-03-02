@@ -2,6 +2,7 @@
 
 已知问题：
 - 某些 emoji 在其他平台下会变成奇怪的样子，甚至会直接消失。一些字符可以通过使用其他字母代替（如 ℹ -> i）来解决，但是大部分 emoji 尚未找到解决方案，如果您知道如何解决，欢迎私信本人
+
 $
 \def\notew{200pt}
 \def\noteh{44pt}
@@ -164,6 +165,7 @@ $
 \def\notetitleoffest{80pt}
 \drawnote
 $
+
 $\kern{4pt}\footnotesize
 {}^{\begin{array}{l}
 \sf{这是发布到公共领域的免费且不受阻碍的源码。}\\
