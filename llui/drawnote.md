@@ -219,7 +219,9 @@ $
   }
 }
 \kern{-300pt}
-$.$\footnotesize
+$
+
+$\footnotesize
 {}^{\kern{4pt}
 \begin{array}{l}
 \textsf{这是发布到公共领域的免费且不受阻碍的源码。}\\
