@@ -6,3 +6,21 @@
 $\LaTeX$
 
 $test %1111$
+
+$%aa
+xx
+$
+
+$
+a
+b
+v
+c
+$
+
+---
+$sss$
+---
+$%aaa
+xxx
+$
