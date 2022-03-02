@@ -146,7 +146,7 @@ $
     \BasicInfoBarFather{#1}{#2}{#3}{#4}
     {\BasicWarnBarColorFill}{i}{\BasicWarnBarColorIcon}
 }
-\BasicWarnBar{250px}{26px}{注意}{本文为方便，在文中常用 “块” 指代一段 \LaTeX 公式。}\\
+\BasicWarnBar{250px}{26px}{注意}{本文为方便，在文中常用 “块” 指代一段 \LaTeX 公式。}
 $
 
 ---
