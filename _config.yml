@@ -1,4 +1,4 @@
 markdown: kramdown
 kramdown:
   input:  GFM
-  use_coderay: false
+  use_coderay: true
