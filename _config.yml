@@ -1,1 +1,4 @@
-markdown: GFM
+markdown: kramdown
+kramdown:
+  input:  GFM
+  use_coderay: false
