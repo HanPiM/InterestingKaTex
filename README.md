@@ -24,3 +24,11 @@ $sss$
 $%aaa
 xxx
 $
+
+$
+aa\\bb
+$
+
+$
+cc\\[10pt]dd
+$
