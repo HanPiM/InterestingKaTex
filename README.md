@@ -29,6 +29,8 @@ $
 aa\\bb
 $
 
+{% raw %}
 $
 cc\\[10pt]dd
 $
+{% endraw %}
